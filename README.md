@@ -45,7 +45,7 @@ docker run --rm -v ./data/input:/mnt/deconto_data_in:ro \
  --pyear-step 10 --baseyear 2000 --replace True \
  --locationfile  /mnt/deconto_data_in/location.lst \
  --rngseed 1342 --chunksize 50 --pipeline-id MY_PIPELINE_ID \
- --fpdir  /mnt/deconto_data_in/grd_fingerprints_data/FPRINT/ \
+ --fpdir  /mnt/deconto_data_in/FPRINT/ \
 --output-wais-lslr  /mnt/deconto_data_out/wais_lslr.nc \
 --output-eais-lslr /mnt/deconto_data_out/eais_lslr.nc \
 --output-ais-lslr /mnt/deconto_data_out/ais_lslr.nc \
