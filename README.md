@@ -118,7 +118,7 @@ docker build -t deconto21-ais .
 ```
 
 ## Results 
-If this module runs successfully, a single netCDF containing projections of local sea level change will appear in ./data/output.
+If this module runs successfully, a NetCDF file will be written containing local and global sea level projections based on contributions from the western Antarctic Ice Sheet (WAIS), eastern Antarctic Ice Sheet (EAIS) and the Antarctic Ice Sheet as a whole (AIS). These will be written to `./data/output`. 
 
 ## Support
 Source code is available online at https://github.com/fact-sealevel/deconto21-ais. This software is open source, available under the MIT license.
