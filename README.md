@@ -23,19 +23,13 @@ mkdir -p ./data/output
 echo "New_York	12	40.70	-74.01" > ./data/input/location.lst
 ```
 
-After you've cloned the repo and downloaded the necessary data, from the root directory, create a docker container:
-
-```shell
-docker build -t deconto21-ais .
-```
-
-Then, run the container, mounting a volume in the container to the location of the repo on your machine, the location of the input data and where the output data will be written. Execute the application and pass the necessary arguments to the CLI tool:
+Then, run the container associated with the package, passing the necessary arguments to the CLI tool:
 
 ```shell
 docker run --rm \
 -v ./data/input:/mnt/deconto_data_in:ro \
 -v ./data/output:/mnt/deconto_data_out \
-deconto21-ais \
+ghcr.io/fact-sealevel/deconto21-ais:edge \
 --input-eais-rcp26-file /mnt/deconto_data_in/dp21_eais_rcp26.nc \
 --input-eais-rcp45-file /mnt/deconto_data_in/dp21_eais_rcp45.nc \
 --input-eais-rcp85-file /mnt/deconto_data_in/dp21_eais_rcp85.nc \
