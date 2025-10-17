@@ -1,7 +1,7 @@
 [project]
 name = "deconto21-ais"
 version = "0.1.0"
-description = "Add your description here"
+description = "Containerized application that generates estimates of Antarctic ice sheet contributions to future sea level change following the modeling approach developed by DeConto et al. (2021)."
 readme = "README.md"
 authors = [
     { name = "Emma Marshall", email = "emarshall@rhg.com" }
