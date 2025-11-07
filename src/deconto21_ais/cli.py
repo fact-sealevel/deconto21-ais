@@ -142,44 +142,44 @@ import click
     envvar="DP21_PIPELINE_ID",
 )
 @click.option(
-    "--fpdir",
+    "--fingerprint-dir",
     type=str,
     help="Directory containing ice sheet fingerprints",
-    envvar="DP21_FPDIR",
+    envvar="DP21_FINGERPRINT_DIR",
     required=True,
 )
 @click.option(
-    "--output-ais-gslr",
+    "--output-ais-gslr-file",
     type=str,
     help="Output file for AIS global sea level rise projections",
     envvar="DP21_OUTPUT_AIS_GSLR_FILE",
 )
 @click.option(
-    "--output-eais-gslr",
+    "--output-eais-gslr-file",
     type=str,
     help="Output file for EAIS global sea level rise projections",
     envvar="DP21_OUTPUT_EAIS_GSLR_FILE",
 )
 @click.option(
-    "--output-wais-gslr",
+    "--output-wais-gslr-file",
     type=str,
     help="Output file for WAIS global sea level rise projections",
     envvar="DP21_OUTPUT_WAIS_GSLR_FILE",
 )
 @click.option(
-    "--output-ais-lslr",
+    "--output-ais-lslr-file",
     type=str,
     help="Output file for AIS local sea level rise projections",
     envvar="DP21_OUTPUT_AIS_LSLR_FILE",
 )
 @click.option(
-    "--output-eais-lslr",
+    "--output-eais-lslr-file",
     type=str,
     help="Output file for EAIS local sea level rise projections",
     envvar="DP21_OUTPUT_EAIS_LSLR_FILE",
 )
 @click.option(
-    "--output-wais-lslr",
+    "--output-wais-lslr-file",
     type=str,
     help="Output file for WAIS local sea level rise projections",
     envvar="DP21_OUTPUT_WAIS_LSLR_FILE",
@@ -203,13 +203,13 @@ def main(
     pipeline_id,
     locationfile,
     chunksize,
-    fpdir,
-    output_ais_gslr,
-    output_eais_gslr,
-    output_wais_gslr,
-    output_ais_lslr,
-    output_eais_lslr,
-    output_wais_lslr,
+    fingerprint_dir,
+    output_ais_gslr_file,
+    output_eais_gslr_file,
+    output_wais_gslr_file,
+    output_ais_lslr_file,
+    output_eais_lslr_file,
+    output_wais_lslr_file,
 ):
     """Run the DP21 ice sheet workflow."""
 
@@ -240,9 +240,9 @@ def main(
             replace=replace,
             rngseed=rngseed,
             preprocess_dict=dp21_preprocessed_data,
-            output_ais_gslr_file=output_ais_gslr,
-            output_eais_gslr_file=output_eais_gslr,
-            output_wais_gslr_file=output_wais_gslr,
+            output_ais_gslr_file=output_ais_gslr_file,
+            output_eais_gslr_file=output_eais_gslr_file,
+            output_wais_gslr_file=output_wais_gslr_file,
         )
     # if climate_data_file is None:
     else:
@@ -255,9 +255,9 @@ def main(
             rngseed=rngseed,
             pipeline_id=pipeline_id,
             preprocess_dict=dp21_preprocessed_data,
-            output_ais_gslr_file=output_ais_gslr,
-            output_eais_gslr_file=output_eais_gslr,
-            output_wais_gslr_file=output_wais_gslr,
+            output_ais_gslr_file=output_ais_gslr_file,
+            output_eais_gslr_file=output_eais_gslr_file,
+            output_wais_gslr_file=output_wais_gslr_file,
         )
 
     # Run the post-processing stage
@@ -266,8 +266,8 @@ def main(
         chunksize=chunksize,
         pipeline_id=pipeline_id,
         projected_dict=dp21_projected_data,
-        fpdir=fpdir,
-        out_ais_lslr_file=output_ais_lslr,
-        out_eais_lslr_file=output_eais_lslr,
-        out_wais_lslr_file=output_wais_lslr,
+        fpdir=fingerprint_dir,
+        out_ais_lslr_file=output_ais_lslr_file,
+        out_eais_lslr_file=output_eais_lslr_file,
+        out_wais_lslr_file=output_wais_lslr_file,
     )

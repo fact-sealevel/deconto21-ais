@@ -4,7 +4,7 @@ An application producing sea level projections by directly sampling the Antarcti
 
 ## Example
 
-This application can run on emissions-projected climate data. For example, you can use the output `climate.nc` file from the [fair model container](https://github.com/facts-org/fair-temperature). Additional input data is located in this repository.
+This application can run on emissions-projected climate data. For example, you can use the output `climate.nc` file from the [fair model container](https://github.com/fact-sealevel/fair-temperature). Additional input data is located in this repository.
 
 ### Setup
 
@@ -18,8 +18,7 @@ curl -sL https://zenodo.org/record/7478192/files/grd_fingerprints_data.tgz | tar
 
 #Make directory for inputs
 mkdir -p ./data/output
-
-#Add location file to input dir
+# Add location file to input dir 
 echo "New_York	12	40.70	-74.01" > ./data/input/location.lst
 ```
 
@@ -41,12 +40,12 @@ ghcr.io/fact-sealevel/deconto21-ais:edge \
 --locationfile  /mnt/deconto_data_in/location.lst \
 --rngseed 1342 --pipeline-id MY_PIPELINE_ID \
 --fpdir  /mnt/deconto_data_in/FPRINT \
---output-wais-lslr  /mnt/deconto_data_out/wais_lslr.nc \
---output-eais-lslr /mnt/deconto_data_out/eais_lslr.nc \
---output-ais-lslr /mnt/deconto_data_out/ais_lslr.nc \
---output-wais-gslr /mnt/deconto_data_out/wais_gslr.nc \
---output-eais-gslr /mnt/deconto_data_out/eais_gslr.nc \
---output-ais-gslr /mnt/deconto_data_out/ais_gslr.nc
+--output-wais-lslr-file  /mnt/deconto_data_out/wais_lslr.nc \
+--output-eais-lslr-file /mnt/deconto_data_out/eais_lslr.nc \
+--output-ais-lslr-file /mnt/deconto_data_out/ais_lslr.nc \
+--output-wais-gslr-file /mnt/deconto_data_out/wais_gslr.nc \
+--output-eais-gslr-file /mnt/deconto_data_out/eais_gslr.nc \
+--output-ais-gslr-file /mnt/deconto_data_out/ais_gslr.nc
 ```
 
 ## Features
@@ -84,17 +83,17 @@ Options:
   --pipeline-id TEXT            Unique identifier for this instance of the
                                 module
   --fpdir TEXT                  Directory containing ice sheet fingerprints
-  --output-ais-gslr TEXT        Output file for AIS global sea level rise
+  --output-ais-gslr-file TEXT        Output file for AIS global sea level rise
                                 projections
-  --output-eais-gslr TEXT       Output file for EAIS global sea level rise
+  --output-eais-gslr-file TEXT       Output file for EAIS global sea level rise
                                 projections
-  --output-wais-gslr TEXT       Output file for WAIS global sea level rise
+  --output-wais-gslr-file TEXT       Output file for WAIS global sea level rise
                                 projections
-  --output-ais-lslr TEXT        Output file for AIS local sea level rise
+  --output-ais-lslr-file TEXT        Output file for AIS local sea level rise
                                 projections
-  --output-eais-lslr TEXT       Output file for EAIS local sea level rise
+  --output-eais-lslr-file TEXT       Output file for EAIS local sea level rise
                                 projections
-  --output-wais-lslr TEXT       Output file for WAIS local sea level rise
+  --output-wais-lslr-file TEXT       Output file for WAIS local sea level rise
                                 projections
   --help                        Show this message and exit.
 ```
