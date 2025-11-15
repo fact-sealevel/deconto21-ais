@@ -80,7 +80,7 @@ def make_projection_ds(
             "locations": (("locations",), locations),
         },
         attrs={
-            "description": f"Global SLR contribution from {ice_source} from the Bamber et al. 2019 IPCC AR6 workflow",
+            "description": f"Global SLR contribution from {ice_source} from the Deconto et al. 2021 IPCC AR6 workflow",
             "history": "Created " + time.ctime(time.time()),
             "scenario": scenario,
             "baseyear": baseyear,
