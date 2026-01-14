@@ -6,6 +6,10 @@ from deconto21_ais.deconto21_ais_project import (
 from deconto21_ais.deconto21_ais_postprocess import dp21_postprocess_icesheet
 
 import click
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 @click.command()
@@ -184,6 +188,11 @@ import click
     help="Output file for WAIS local sea level rise projections",
     envvar="DP21_OUTPUT_WAIS_LSLR_FILE",
 )
+@click.option(
+    "--debug/--no-debug",
+    default=False,
+    envvar="DP21_DEBUG",
+)
 def main(
     scenario,
     baseyear,
@@ -210,10 +219,15 @@ def main(
     output_ais_lslr_file,
     output_eais_lslr_file,
     output_wais_lslr_file,
+    debug,
 ):
     """Run the DP21 ice sheet workflow."""
 
     click.echo("Hello from deconto21-ais!")
+    if debug:
+        logging.root.setLevel(logging.DEBUG)
+    else:
+        logging.root.setLevel(logging.INFO)
 
     input_data_dict = {
         "rcp26": {"eais": input_eais_rcp26_file, "wais": input_wais_rcp26_file},
@@ -221,6 +235,7 @@ def main(
         "rcp85": {"eais": input_eais_rcp85_file, "wais": input_wais_rcp85_file},
     }
     # Run the preprocessing stage
+    logger.info("Starting preprocessing step...")
     dp21_preprocessed_data = dp21_preprocess_icesheet(
         scenario=scenario,
         baseyear=baseyear,
@@ -228,8 +243,10 @@ def main(
         pipeline_id=pipeline_id,
         climate_data_file=climate_data_file,
     )
+    logger.info("Finished preprocessing step")
 
     # Run the projection stage
+    logger.info("Starting projection step...")
     if climate_data_file is not None:
         dp21_projected_data = dp21_project_icesheet_temperaturedriven(
             climate_data_file=climate_data_file,
@@ -259,8 +276,10 @@ def main(
             output_eais_gslr_file=output_eais_gslr_file,
             output_wais_gslr_file=output_wais_gslr_file,
         )
+    logger.info("Finished projection step")
 
     # Run the post-processing stage
+    logger.info("Starting postprocessing step...")
     dp21_postprocess_icesheet(
         locationfile=locationfile,
         chunksize=chunksize,
@@ -271,3 +290,4 @@ def main(
         out_eais_lslr_file=output_eais_lslr_file,
         out_wais_lslr_file=output_wais_lslr_file,
     )
+    logger.info("Finished postprocessing step")
