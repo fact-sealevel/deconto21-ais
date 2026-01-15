@@ -125,10 +125,10 @@ logging.basicConfig(level=logging.INFO)
     show_default=True,
 )
 @click.option(
-    "--locationfile",
+    "--location-file",
     type=str,
     help="File that contains name, id, lat, and lon of points for localization",
-    envvar="DP21_LOCATIONFILE",
+    envvar="DP21_LOCATION_FILE",
     required=True,
 )
 @click.option(
@@ -210,7 +210,7 @@ def main(
     replace,
     rngseed,
     pipeline_id,
-    locationfile,
+    location_file,
     chunksize,
     fingerprint_dir,
     output_ais_gslr_file,
@@ -281,7 +281,7 @@ def main(
     # Run the post-processing stage
     logger.info("Starting postprocessing step...")
     dp21_postprocess_icesheet(
-        locationfile=locationfile,
+        locationfile=location_file,
         chunksize=chunksize,
         pipeline_id=pipeline_id,
         projected_dict=dp21_projected_data,
