@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+- Added logging to CLI script (See [PR 11](https://github.com/fact-sealevel/deconto21-ais/pull/11), [@e-marshall](https://github.com/e-marshall))
+- Added support for multiple architectures to container built in registry during CI/CD (See [PR 11](https://github.com/fact-sealevel/deconto21-ais/pull/11), [@e-marshall](https://github.com/e-marshall))
+
+### Fixed
+- Changed the locationfile arg name to match other modules (See [PR 12](https://github.com/fact-sealevel/deconto21-ais/pull/12), [@e-marshall](https://github.com/e-marshall))
 
 
 ## [0.1.1] - 2025-11-14
