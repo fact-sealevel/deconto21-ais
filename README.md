@@ -28,7 +28,7 @@ Then, run the container associated with the package, passing the necessary argum
 docker run --rm \
 -v ./data/input:/mnt/deconto_data_in:ro \
 -v ./data/output:/mnt/deconto_data_out \
-ghcr.io/fact-sealevel/deconto21-ais:0.1.0 \
+ghcr.io/fact-sealevel/deconto21-ais:latest \
 --input-eais-rcp26-file /mnt/deconto_data_in/dp21_eais_rcp26.nc \
 --input-eais-rcp45-file /mnt/deconto_data_in/dp21_eais_rcp45.nc \
 --input-eais-rcp85-file /mnt/deconto_data_in/dp21_eais_rcp85.nc \
