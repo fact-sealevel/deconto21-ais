@@ -84,7 +84,7 @@ wheels = [
 
 [[package]]
 name = "deconto21-ais"
-version = "0.1.1"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "dask" },
