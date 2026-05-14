@@ -34,6 +34,7 @@ logging.basicConfig(level=logging.INFO)
     type=str,
     help="NetCDF4/HDF5 file containing surface temperature data",
     envvar="DP21_CLIMATE_DATA_FILE",
+    default="",
 )
 @click.option(
     "--input-eais-rcp26-file",
