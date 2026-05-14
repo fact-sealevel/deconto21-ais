@@ -301,13 +301,11 @@ def GetSATData(
 ):
     # Open the file
     df_ssp = h5py.File(fname, "r")
-
     # Extract the surface temperature for this scenario
     if scenario not in df_ssp.keys():
         raise ValueError("Scenario {} not found in {}".format(scenario, fname))
     ssp_folder = df_ssp.get(scenario)
     sat_ssp = ssp_folder.get("surface_temperature")
-
     # Get the number of ensemble members from the data
     _, nens = sat_ssp.shape
 
