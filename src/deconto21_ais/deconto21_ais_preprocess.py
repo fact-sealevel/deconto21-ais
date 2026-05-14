@@ -18,8 +18,8 @@ of this module within the same workflow.
 def dp21_preprocess_icesheet(
     scenario, baseyear, pipeline_id, climate_data_file, input_paths_dict
 ):
-    # If a climate data file is passed
-    if climate_data_file is not None:
+    # keeping f1 approach.
+    if len(climate_data_file) > 0:
         scens = ["rcp26", "rcp45", "rcp85"]
         years, eais_samps, wais_samps = ReadScenarioFile(
             scenario=scens[0], baseyear=baseyear, paths_dict=input_paths_dict
@@ -36,7 +36,6 @@ def dp21_preprocess_icesheet(
         years, eais_samps, wais_samps = ReadScenarioFile(
             scenario, baseyear, input_paths_dict
         )
-
     output = {
         "years": years,
         "eais_samps": eais_samps,
@@ -44,6 +43,7 @@ def dp21_preprocess_icesheet(
         "scenario": scenario,
         "baseyear": baseyear,
     }
+
     return output
 
 
